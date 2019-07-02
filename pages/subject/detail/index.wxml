@@ -1,0 +1,4 @@
+<!--专题index.wxml-->
+<view class="container">
+  <web-view src="{{detail_url}}"></web-view>
+</view>

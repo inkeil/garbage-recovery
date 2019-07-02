@@ -1,0 +1,66 @@
+<!--index.wxml-->
+<view class="container" hidden="{{showPage==0}}">
+  <block wx:if="{{canIUse}}">
+    <view class="auth-win" wx:if="{{showauth}}">
+        <view class="con" wx:if="{{showauth}}">
+          <view class="title">温馨提示</view>
+          <view class="text">为了给您提供更好的服务，请授权您的公开信息（昵称、头像、地区及性别）</view>
+          <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信授权 </button>
+        </view>
+    </view>
+    <view class="my-address" wx:if="{{showTitBar}}">
+      <view class="title">我的地址</view>
+      <view class="add-btn" wx:if="{{showList}}" ontap="editAddress" data-numb="-1">添加地址</view>
+      <view class="address-save-btn" wx:if="{{showEdit}}" ontap="saveAddressData">保存地址</view>
+      <view class="address-cancel-btn" wx:if="{{showEdit}}" ontap="cancelAddressData">取消</view>
+    </view>
+    <!-- 联系方式列表 -->
+    <view class="address-list" wx:if="{{showList}}">
+      <block wx:for="{{address}}" wx:key="key" wx:for-index="index">
+        <view wx:if="{{showAllAddress.state||item.selected}}" class="item {{item.selected?'default-item':''}}">
+          <view class="contact">{{item.name}}</view>
+          <view class="info">
+            <view data-before="地址：">{{ item.allArea + item.detailed }}</view>
+            <view data-before="手机：">{{item.phone}}</view>
+          </view>
+          <view class="seting-bar">
+            <view class="edit-btn" ontap="editAddress" data-numb="{{index}}">编辑</view>
+            <view class="delete-btn" wx:if="{{!item.selected}}" ontap="deleteAddress"  data-numb="{{index}}">删除</view>
+            <view class="radio-btn" wx:if="{{!item.selected}}" ontap="changeDefaultAddress" data-numb="{{index}}">开启默认地址</view>
+            <view class="default-text" wx:else>默认地址</view>
+          </view>
+        </view>
+      </block>
+      <view class="btn-bar">
+        <view class="{{showAllAddress.state?'hidden-more-btn':'show-more-btn'}}" wx:if="{{(showList&&address.length>1)}}" ontap="showMoreAddress">{{showAllAddress.text}}</view>
+      </view>
+    </view>
+    <!-- 添加或编辑联系方式 -->
+    <view class="address-edit" wx:if="{{showEdit}}">
+      <view class="input-box" data-tit="联系人：">
+        <input placeholder="请输入您的姓名" type="text" value="{{editAddressData.name}}" bindinput="contactBindInput" />
+      </view>
+      <view class="input-box" data-tit="手机：" >
+        <input placeholder="请输入手机号" type="number" maxlength="11" value="{{editAddressData.phone}}" bindinput="phoneBindInput"/>
+      </view>
+      <view class="area-select-bar" data-tit="所在地区：">
+        <picker mode="multiSelector" bindchange="bindRegionChange" bindcolumnchange="bindColumnChange" value="{{selectareaIndex}}" range="{{selectareaArray}}">
+          <view wx:if="{{selectareaIndex.length>0}}" class="area-text-box">
+            {{selectareaArray[0][selectareaIndex[0]]}}，{{selectareaArray[1][selectareaIndex[1]]}}，{{selectareaArray[2][selectareaIndex[2]]}}
+          </view>
+          <view wx:else class="area-text-box">请选择所在地址</view>
+        </picker>
+      </view>
+      <view class="input-box" data-tit="详细地址：" >
+        <input placeholder="请输入详细地址" type="text" value="{{editAddressData.detailed}}" bindinput="addressDetailedBindInput"/>
+      </view>
+      <view class="default-address-seting" data-tit="设为默认地址：">
+        <view class="{{editAddressData.selected?'selected-btn':'select-btn'}}" data-val="{{editAddressData.selected}}" ontap="setingDefault"></view>
+      </view>
+    </view>
+    
+  </block>
+  <view class="version-low-info" wx:else>
+    <text>微信版本过低，请升级微信版本</text>
+  </view>
+</view>

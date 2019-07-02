@@ -1,0 +1,60 @@
+<!--index.wxml-->
+<view class="container" hidden="{{showPage==0}}">
+  <block wx:if="{{canIUse}}">
+    <view class="auth-win" wx:if="{{showauth}}">
+        <view class="con" wx:if="{{showauth}}">
+          <view class="title">温馨提示</view>
+          <view class="text">为了给您提供更好的服务，请授权您的公开信息（昵称、头像、地区及性别）</view>
+          <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信授权 </button>
+        </view>
+    </view>
+    <view class="top-bar">
+      <view class="user-info">
+        <view class="avatar-group">
+          <view class="avatar">
+            <image class="img" src="{{ user.avatar }}"></image>
+          </view>
+          <view class="level">{{user.level}}级</view>
+        </view>
+        <view class="user-group">
+          <view class="name">{{user.user_nickname}}</view>
+          <view class="star-level">
+            <view wx:for="{{user.vote_arr}}" wx:key="_key" class="star_{{item}}"></view>
+          </view>
+          <view class="scores">积分：{{user.coin}}</view>
+        </view>
+        <view class="message-btn" ontap="gotoXtxxPage">系统消息</view>
+      </view>
+      <view class="achievement">
+        <view class="my-icon" data-after="我的成就"></view>
+        <view class="text-info">
+          <view class="text">我们共为你服务了<text>{{user.service_count}}</text>次</view>
+          <view class="text">共为您带来了<text>¥{{user.income}}</text>的收益</view> 
+        </view>
+      </view>
+    </view>
+    <!-- 图表 -->
+    <view class="month-income" data-tit="您的最近一月收入">
+      <canvas canvas-id="chart" style="width:{{canvasSize._w}}px;height:{{canvasSize._h}}px;" class="img"></canvas>
+      <!-- <image class="img" src="http://n-dong.cn/testpic/img/interim/tubiao_img.png"></image> -->
+    </view>
+    <!-- 列表 -->
+    <view class="list-box">
+      <view class="item" data-tit="我的余额" ontap="gotoWdye">
+        <text class="money">¥{{user.balance}}</text>
+      </view>
+      <view class="item" wx:if="{{user.employee_status!=0}}" data-tit="申请加入我们" data-state="{{user.employee_status}}" ontap="gotoYgsq">
+        <text class="text">{{user.employee_status_text}}</text>
+      </view>
+      <view class="item" data-tit="我的订单" ontap="gotoWddd"></view>
+      <view class="item" data-tit="个人设置" ontap="gotoGrsz"></view>
+      <view class="item" data-tit="近期活动" ontap="gotoJqhd"></view>
+    </view>
+  </block>
+  <view class="version-low-info" wx:else>
+    <text>微信版本过低，请升级微信版本</text>
+  </view>
+     <view class="copy-box">
+      <text class="copy-right">聪聆科技提供技术支持：18189122453</text>
+    </view>
+</view>

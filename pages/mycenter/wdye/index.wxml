@@ -1,0 +1,34 @@
+<!--  index.wxml  -->
+<view class="container">
+    <view class="top-bar">
+      <view class="text-info" data-tit="我的余额"><text>¥{{blance}}</text></view>
+      <view class="tixian-btn" ontap="tixianFunc" wx:if="{{(blance>0&&withdraw==1)}}">提现</view>
+    </view>
+    <view class="list-box">
+      <view class="tag-bar">
+        <view class="tag {{tag_type==0?'cur':''}}" data-type="0" ontap="changeList">全部账目</view>
+        <view class="tag1 {{tag_type==1?'cur':''}}" data-type="1" ontap="changeList">出售废品账目</view>
+        <view class="tag {{tag_type==2?'cur':''}}" data-type="2" ontap="changeList">提现账目</view>
+      </view>
+      <view class="item-wrap">
+        <view class="item-group" wx:for="{{list}}" wx:key="key">
+          <view class="texts">{{item.is_title}}</view>
+          <view class="times">{{item.create_time}}</view>
+          <view class="money {{item.money_class}}">{{item.money}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="tixian-box" wx:if="{{showTixian}}">
+      <view class="con">
+        <view class="input-box">
+          <input placeholder="请输入提现金额" type="digit" value="{{tixianCash}}" bindinput="changeTixianValue" data-name="tixianCash" />
+        </view>
+        <view class="tishi">{{tixian_tips}}</view>
+        <view class="tishi_1">您最多可提现金额：{{cash_max_num}}</view>
+        <view class="btn-bar">
+          <view class="submit-btn" ontap="submitTixianFunc">确定并提现到微信</view>
+          <view class="cancel-btn" ontap="cancelTixianFunc">取消</view>
+        </view>
+      </view>
+    </view>
+</view>

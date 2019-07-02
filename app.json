@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/wdpaihang/index",
+    "pages/subject/index",
+    "pages/subject/detail/index",
+    "pages/feipinzhuanqian/index",
+    "pages/mycenter/index",
+    "pages/mycenter/wdye/index",
+    "pages/mycenter/ygsq/index",
+    "pages/mycenter/grsz/index",
+    "pages/mycenter/wddd/index",
+    "pages/mycenter/service/index",
+    "pages/mycenter/ddxq/index",
+    "pages/mycenter/xtxx/index",
+    "pages/mycenter/editaddress/index"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#41bb86",
+    "navigationBarTitleText": "废品变宝",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f2f2f2"
+  },
+  "tabBar": {
+    "color": "#889994",
+    "selectedColor": "#4eb99c",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "selectedIconPath": "img/tab_bar_index_selected.png",
+        "iconPath": "img/tab_bar_index.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "img/tab_bar_zt_selected.png",
+        "iconPath": "img/tab_bar_zt.png",
+        "pagePath": "pages/subject/index",
+        "text": "专题"
+      },
+      {
+        "selectedIconPath": "img/tab_bar_zq_selected.png",
+        "iconPath": "img/tab_bar_zq.png",
+        "pagePath": "pages/feipinzhuanqian/index",
+        "text": "废品赚钱"
+      },
+      {
+        "selectedIconPath": "img/tab_bar_my_selected.png",
+        "iconPath": "img/tab_bar_my.png",
+        "pagePath": "pages/mycenter/index",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

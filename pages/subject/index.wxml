@@ -1,0 +1,29 @@
+<!--专题index.wxml-->
+<view class="container" hidden="{{showPage==0}}">
+  <block wx:if="{{canIUse}}">
+    <view class="auth-win" wx:if="{{showauth}}">
+        <view class="con" wx:if="{{showauth}}">
+          <view class="title">温馨提示</view>
+          <view class="text">为了给您提供更好的服务，请授权您的公开信息（昵称、头像、地区及性别）</view>
+          <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信授权 </button>
+        </view>
+    </view>
+    <view class="tag-box">
+    	<view class="No1 {{categoryId==3?'curent':''}}" ontap="changeCategoryId" data-categoryid="3">官方专题</view>
+    	<view class="No2 {{categoryId==4?'curent':''}}" ontap="changeCategoryId" data-categoryid="4">合作企业专题</view>
+    </view>
+    <view class="item-group" wx:for="{{listData}}" wx:key="_k" wx:for-index="index" data-num="{{index}}" ontap="gotodetail">
+    	<image class="img" src="{{item.thumbnail}}"></image>
+    	<view class="tit-bar">
+    		<view class="title">{{item.post_title}}</view>
+    		<view class="{{item.status_class}}">{{item.article_status}}</view>
+    	</view>
+    	<view class="date">{{item.published_time}}</view>
+    	<view class="abstract">{{item.post_excerpt}}</view>
+    </view>
+
+  </block>
+  <view class="version-low-info" wx:else>
+    <text>微信版本过低，请升级微信版本</text>
+  </view>
+</view>

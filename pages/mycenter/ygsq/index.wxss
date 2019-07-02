@@ -1,0 +1,86 @@
+.my-address{
+	height:50rpx;padding-top:37rpx;
+}
+.my-address .title{
+	height:50rpx;line-height:50rpx;font-size:34rpx;color:#333;text-align:center;
+}
+
+
+
+.address-edit,
+.info-box{
+	margin:20rpx 27rpx;background:#fff;border-radius:18rpx;padding:27rpx 27rpx 40rpx;
+}
+.address-edit .input-box,
+.address-edit .area-select-bar,
+.address-edit .default-address-seting,
+.address-edit .zd-select-bar{
+	height:72rpx;overflow:hidden;
+	padding:18rpx 0;
+}
+.address-edit .input-box::before,
+.address-edit .area-select-bar::before,
+.address-edit .zd-select-bar::before,
+.address-edit .zd-address-detail::before{
+	content:attr(data-tit);float:left;line-height:72rpx;font-size:26rpx;color:#999;
+	text-align:right;width:150rpx;
+}
+.address-edit .input-box input{
+	float:left;width:470rpx;height:70rpx;line-height:70rpx;border:1px solid #ddd;border-radius:4px;background:#fbfbfb;
+	padding:0 10rpx;font-size:26rpx;color:#666;
+}
+.address-edit .area-select-bar .area-text-box,
+.address-edit .zd-select-bar .zd-text-box{
+	float:left;font-size:26rpx;color:#666;line-height:72rpx;height:72rpx;padding-left:10rpx;
+	width:470rpx;
+}
+.address-edit .area-select-bar .area-text-box::after,
+.address-edit .zd-select-bar .zd-text-box::after{
+	content:"";float:right;width:18rpx;height:33rpx;margin:19rpx 10rpx 0 0;
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAhCAYAAADUIPtUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3RkQzMkY4MEVCNUQxMUU4Qjg0MDkyMTNCOTQzMkFCMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3RkQzMkY4MUVCNUQxMUU4Qjg0MDkyMTNCOTQzMkFCMiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjdGRDMyRjdFRUI1RDExRThCODQwOTIxM0I5NDMyQUIyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjdGRDMyRjdGRUI1RDExRThCODQwOTIxM0I5NDMyQUIyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+KraNgwAAAbdJREFUeNqcls0rRFEYxq/BCDEplJ2FjZKSrwhxfUYRsvAf2NhaKls7y7uejFAkIRMLKaXUNDVhQsSMphmTbjILK8+pV72dbjrvfeu3mGfq171zznnOFDmO02lZ1g6oAEtg3/IxAbAKGkE92AZzfkXv7HMp2ALTfkQrIMayINgFk1KRC0ZBXJPtgXGJSE2eZAn2XRnJRiQiNTkwDO5YplbyAAxKRGqywAZJTXYE+iUiNRl6skcPWa9EpCYNhsATy6rAMeiWiNSk6DVfWBYCp6BDIlLzSrI3TRYFbRKRmmd6zRTLakjWKhFZ9FvZ2nGqBWegRSJS80CrmWFZHTgHzQHh2bwnWY5lqjU2Az4a4xZsaFmTH9EiWNOydaloAYRBMcuiUtE8iGgStWqz4MdUNEOSEpZdUF4wXf4puhyCLLukvGC6ISeo3LjkiiTfpkdkzENyTV3+ZXpobbrfyll2Qx3umtbIADikMvubGD2ha1psfVReXBKni+HTtGp7qE4rWZYgSd60/LvACajWzpR+QP8VtdM2D7E8SZKs5IIMaxKv3jESNXg0YdrPn4hl8EGbzda62Xh+BRgASjhb7Pbst88AAAAASUVORK5CYII=) no-repeat;
+	background-size:18rpx 33rpx;
+}
+.address-edit .zd-address-detail{
+	min-height:72rpx;overflow:hidden;
+	padding:18rpx 0;
+}
+.address-edit .zd-address-detail .text{
+	float:left;font-size:26rpx;color:#666;line-height:40rpx;min-height:40rpx;padding-left:10rpx;
+	width:470rpx;margin:16rpx 0;
+}
+
+.address-edit .btn-bar{
+	height:70rpx;padding:27rpx 0 0;
+}
+.address-edit .btn-bar .submit-address-btn{
+	width:396rpx;height:70rpx;line-height:70rpx;background:#6ac4a6;border-radius:4px;color:#fff;text-align:center;
+	font-size:30rpx;margin:0 auto;
+}
+
+
+.info-box .check-info{
+	min-height:72rpx;overflow:hidden;
+	padding:18rpx 0;
+}
+.info-box .check-info::before{
+	content:attr(data-tit);float:left;line-height:72rpx;font-size:26rpx;color:#999;
+	text-align:right;width:150rpx;
+}
+.info-box .check-info text{
+	float:left;font-size:26rpx;color:#666;line-height:40rpx;min-height:40rpx;padding-left:10rpx;
+	width:470rpx;margin:16rpx 0;
+}
+.info-box .btn-bar{
+	height:70rpx;padding:27rpx 0 0;
+}
+.info-box .btn-bar .shenhezhong,
+.info-box .btn-bar .shenhetongguo{
+	width:396rpx;height:70rpx;line-height:70rpx;background:#ccc;border-radius:4px;color:#fff;text-align:center;
+	font-size:30rpx;margin:0 auto;
+}
+.info-box .btn-bar .shenhetongguo{
+	background:#49b355;
+}
+
+
+

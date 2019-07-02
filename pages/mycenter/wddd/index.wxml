@@ -1,0 +1,52 @@
+<!--我的订单 index.wxml-->
+<view class="container">
+  <view class="tag-bar">
+    <view class="tag {{order_status=='all'?'cur':''}}" ontap="filterOrderFunc" data-status="all">全部</view>
+    <view class="tag {{order_status=='0'?'cur':''}}" ontap="filterOrderFunc" data-status="0">待接单</view>
+    <view class="tag {{order_status=='1'?'cur':''}}" ontap="filterOrderFunc" data-status="1">待收购</view>
+    <view class="tag {{order_status=='3'?'cur':''}}" ontap="filterOrderFunc" data-status="3">已完成</view>
+    <view class="tag {{order_status=='-1'?'cur':''}}"  ontap="filterOrderFunc" data-status="-1">已关闭</view>
+  </view>
+  <block wx:for="{{ orderData }}" wx:key="key" wx:for-item="item" wx:for-index="__i">
+    <view class="item-group">
+      <view class="order-numb state_{{item.status}}" data-before="{{ item.state_text }}">订单号：{{ item.order_sn }}</view>
+      <view class="order-date">{{item.create_time}}</view>
+      <view class="order-note" wx:if="{{ item.note&&item.note!='' }}">{{ item.note }}</view>
+      <view class="order-info-bar" wx:if="{{ item.employee }}">
+        <text class="name">收购方：{{ item.employee.user_truename }}</text>
+        <text class="tel">联系方式：{{ item.employee.mobile }}</text>
+      </view>
+      <view class="detail-bar" wx:if="{{ item.item&&item.item.length>0 }}">
+        <view class="tag-list">
+          <text wx:for="{{item.item}}" wx:for-item="isres" wx:key="reskey" wx:for-index="i">{{ isres.name }}</text>
+        </view>
+        <view class="info-text">(共{{ item.res_total.total }}件物品) 总收入：<text>¥{{ item.res_total._p }}</text></view>
+      </view>
+      <view class="btn-bar">
+        <view class="pj_star" wx:if="{{item.status==3 && item.is_vote>-1}}">
+          <view wx:for="{{item.is_vote_star}}" wx:key="_key" wx:for-item="isstars" class="star_{{isstars}}"></view>
+        </view>
+        <view class="sc" wx:if="{{item.status==-1}}" ontap="deleteOrderFunc" data-orderid="{{item.id}}">删除</view>
+        <view class="lxsgy" wx:if="{{item.status==1||item.status==2}}" ontap="callPhoneFunc" data-mobile="{{item.employee.mobile}}">联系收购员</view>
+        <view class="pj" wx:if="{{item.status==3 && item.is_vote<0 }}" data-index="{{__i}}"  data-orderid="{{item.id}}" ontap="showPopStarFunc">评价</view>
+
+        <view class="fqdd" wx:if="{{item.status==0}}" ontap="fqOrderFunc" data-isid="{{item.id}}">放弃订单</view>
+        <view class="ts" ontap="gotoServicePage">投诉</view>
+        <view class="wpzh" wx:if="{{item.status==3}}" ontap="gotoServicePage">物品找回</view>
+        <view class="ckdd" ontap="gotoDdxq" data-isid="{{item.id}}">查看详情</view>
+      </view>
+    </view>
+  </block>
+  <view class="pingjia-box" wx:if="{{pop_star_show}}">
+    <view class="con">
+      <view class="title">您对本次服务的评价</view>
+      <view class="select-bar" bind:touchstart="starTouchStart" bind:touchmove="starTouchMove">
+        <view wx:for="{{star_arr}}" wx:key="key" class="star_{{item}}"></view>
+      </view>
+      <view class="btn-bar">
+        <view class="confirm-btn" ontap="submitPingjia">确认</view>
+        <view class="cancel-btn" ontap="cancelPingjia">取消</view>
+      </view>
+    </view>
+  </view>
+</view>

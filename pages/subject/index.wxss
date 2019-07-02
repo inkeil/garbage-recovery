@@ -1,0 +1,55 @@
+/**专题index.wxss**/
+.tag-box{
+	height:50rpx;padding-top:27rpx;
+}
+.tag-box view{
+	height:46rpx;line-height:46rpx;font-size:34rpx;font-weight:600;color:#999;
+}
+.tag-box .No1{
+	text-align:right;float:left;width:40%;
+}
+.tag-box .No2{
+	text-align:left;float:right;width:48%;
+}
+.tag-box .curent{
+	color:#28955b;
+}
+.item-group{
+	background:#fff;max-height:503rpx;padding:27rpx;margin:22rpx 0;
+}
+.item-group image{
+	width:696rpx;height:290rpx;margin:0 auto;border-radius:3px;overflow:hidden;
+}
+
+.item-group .tit-bar{
+	height:46rpx;padding-top:10rpx;
+}
+.item-group .tit-bar .title{
+	float:left;width:504rpx;height:46rpx;line-height:46rpx;font-size:30rpx;color:#333;
+	overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.item-group .tit-bar .is-state,
+.item-group .tit-bar .is-state_1{
+	float:right;width:150rpx;height:42rpx;line-height:42rpx;margin:2rpx 0;
+	background:#4ac49b;border-radius:21rpx;color:#fff;text-align:center;font-size:28rpx;
+}
+.item-group .tit-bar .is-state_1{
+	background:#ccc;
+}
+.item-group .tit-bar .state-end{
+	background:#acacac;color:#fff;
+}
+.item-group .date{
+	height:32rpx;line-height:32rpx;font-size:20rpx;color:#aaa;
+}
+
+.item-group .abstract{
+	line-height:38rpx;font-size:24rpx;color:#999;margin-top:8rpx;
+	max-height:114rpx;
+	display:-webkit-box;
+	word-break:break-all;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:3;
+}

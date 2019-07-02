@@ -1,0 +1,45 @@
+<!--员工申请 index.wxml-->
+<view class="container">
+  <view class="my-address">
+    <view class="title">员工申请</view>
+  </view>
+  <view class="shenqing-box" wx:if="{{shState==-1}}">
+    <!-- 添加联系方式 -->
+    <view class="address-edit">
+      <view class="input-box" data-tit="称呼：">
+        <input placeholder="请输入您的姓名" type="text" value="{{ygsq_data.name}}" bindinput="contactBindInput" />
+      </view>
+      <view class="input-box" data-tit="联系电话：" >
+        <input placeholder="请输入手机号" type="number" maxlength="11" value="{{ygsq_data.phone}}" bindinput="phoneBindInput"/>
+      </view>
+      <view class="area-select-bar" data-tit="所在地区：">
+        <picker mode="multiSelector" bindchange="bindRegionChange" bindcolumnchange="bindColumnChange" value="{{selectareaIndex}}" range="{{selectareaArray}}">
+          <view wx:if="{{selectareaIndex.length>0}}" class="area-text-box">
+            {{selectareaArray[0][selectareaIndex[0]]}}，{{selectareaArray[1][selectareaIndex[1]]}}，{{selectareaArray[2][selectareaIndex[2]]}}
+          </view>
+          <view wx:else class="area-text-box">请选择所在地址</view>
+        </picker>
+      </view>
+      <view class="input-box" data-tit="详细地址：" >
+        <input placeholder="请输入详细地址" type="text" value="{{ygsq_data.address}}" bindinput="addressDetailedBindInput"/>
+      </view>
+      <view class="zd-select-bar"  data-tit="选择站点：">
+        <picker mode="selector" bindchange="bindSelectZDFunc" value="{{zdindex}}" range="{{zdarray}}">
+          <view wx:if="{{ygsq_data.zd_id}}" class="zd-text-box">{{zdarray[zdindex]}}</view>
+          <view wx:else class="zd-text-box">请选择站点</view>
+        </picker>
+      </view>
+      <view class="zd-address-detail" data-tit="站点地址：" wx:if="{{ygsq_data.zd_detail&&ygsq_data.zd_detail!=''}}"><view class="text">{{ygsq_data.zd_detail}}</view></view>
+      <view class="input-box" data-tit="用户名：" >
+        <input placeholder="请输入登录用户名" type="text" value="{{ygsq_data.user_login}}" bindinput="userLoginBindInput"/>
+      </view>
+      <view class="input-box" data-tit="密码：" >
+        <input placeholder="请输入登录密码" type="password" value="{{ygsq_data.user_pass}}" bindinput="userPasswordBindInput"/>
+      </view>
+      <view class="btn-bar">
+        <view class="submit-address-btn" ontap="submitAddress">提交申请</view>
+      </view>
+    </view>
+  </view>
+  <view class="info-box" wx:else> </view>
+</view>

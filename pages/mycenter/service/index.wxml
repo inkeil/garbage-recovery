@@ -1,0 +1,13 @@
+<!--我的订单 index.wxml-->
+<view class="container">
+  <view class="submit-results">
+    <view class="error">
+        <view class="service-info">
+          <view>您在平台的任何问题</view>
+          <view>（物品找回、投诉、意见、黑名单等等）</view>
+          <view>可以直接联系售后解决哦</view>
+          <view>客服电话：<text>15386871398</text></view>
+        </view>
+    </view>
+  </view>
+</view>

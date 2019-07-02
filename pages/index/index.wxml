@@ -1,0 +1,67 @@
+<!--index.wxml-->
+<view class="container" hidden="{{showPage==0}}" >
+  <block wx:if="{{canIUse}}">
+    <view class="auth-win" wx:if="{{showauth}}">
+        <view class="con" wx:if="{{showauth}}">
+          <view class="title">温馨提示</view>
+          <view class="text">为了给您提供更好的服务，请授权您的公开信息（昵称、头像、地区及性别）</view>
+          <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信授权 </button>
+        </view>
+    </view>
+    <view class="swiper-box">
+      <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+        <block wx:for="{{focusData}}" wx:key="i">
+          <swiper-item>
+              <image src="{{item.imgUrls}}" class="slide-image" data-item="{{item}}" ontap="gotoDetail"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="month-ranking">
+      <block wx:if="{{monthrank}}">
+        <view class="month-ranking-title" data-after="{{monthrank.area.province + monthrank.area.city + monthrank.area.area}}">月排行</view>
+        <scroll-view class="month-ranking-list" scroll-x="true">
+          <view class="item-group">
+            <view class="item" wx:for="{{ monthrank.user_rank }}" wx:key="_k">
+              <image class="img" src="{{item.avatar}}"></image>
+              <view class="con-box">
+                <view class="info-box No{{item.rank}}">
+                  <view>{{item.No}}</view>
+                  <view class="name">{{item.user_nickname}}</view>
+                </view>
+                <view class="income">¥{{item.total_money}}</view>
+              </view>
+            </view>
+          </view>
+
+        </scroll-view>
+        <view class="my-income-box" ontap="gotoPaihangPage">
+          <view class="info" data-after="本月您的废品总收入：">¥{{monthrank.my_profile}}</view>
+          <view class="tips">每月本地域排名前三名的用户，有神秘奖励，快快加油哦！</view>
+        </view>
+      </block>
+    </view>
+
+    <view class="buy-price-box">
+      <view class="title">物品收购价格</view>
+      <view class="search-box"><input bindinput="bindKeyInput" placeholder="搜索收购物品"/></view>
+
+        <view class="item-box" wx:for="{{ buyprice }}" wx:key="_k">
+          <image class="img" src="{{item.icon}}"></image>
+          <view class="con">
+            <view class="name">{{item.waste_name}}</view>
+            <view class="prices">
+              <view class="lie">¥{{item.market_price[2]}}/{{item.unit}}</view>
+              <view class="zhong">¥{{item.market_price[1]}}/{{item.unit}}</view>
+              <view class="you">¥{{item.market_price[0]}}/{{item.unit}}</view>
+            </view>
+          </view>
+        </view>
+
+    </view>
+  </block>
+  <view class="version-low-info" wx:else>
+    <text>微信版本过低，请升级微信版本</text>
+  </view>
+</view>

@@ -1,0 +1,43 @@
+<!--我的排行index.wxml-->
+<view class="container" hidden="{{showPage==0}}">
+  <block wx:if="{{canIUse}}">
+    <view class="auth-win" wx:if="{{showauth}}">
+        <view class="con" wx:if="{{showauth}}">
+          <view class="title">温馨提示</view>
+          <view class="text">为了给您提供更好的服务，请授权您的公开信息（昵称、头像、地区及性别）</view>
+          <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 微信授权 </button>
+        </view>
+    </view>
+    <view class="my-paihang">
+        <view class="top-bar">
+            <view class="info" data-after="历史总收入">¥{{pageData.gross_income}}</view>
+            <view class="info f-r" data-after="本月总收入">¥{{pageData.my_profile}}</view>
+        </view>
+        <view class="my-pm">
+            <view class="avatar">
+                <image class="img" src="{{ wxuserinfo.avatarUrl }}"></image>
+            </view>
+            <view class="text">我的排名：{{pageData.now_rank}}</view>
+        </view>
+        <view class="list-box">
+            <view class="item-group" wx:for="{{pageData.user_rank}}" wx:key="_k" wx:for-item="rank">
+                <view class="avatar">
+                    <image class="img" src="{{ rank.avatar }}"></image>
+                </view>
+                <view class="info">
+                    <view class="name">{{ rank.user_nickname }}</view>
+                    <view class="paiming">
+                        <text class="is-l">第 {{ rank.rank }} 名</text>
+                        <text class="is-r">{{ rank.rank_text }}</text>
+                    </view>
+                    <view class="money">￥{{rank.total_money}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+  </block>
+  <view class="version-low-info" wx:else>
+    <text>微信版本过低，请升级微信版本</text>
+  </view>
+  
+</view>

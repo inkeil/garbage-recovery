@@ -1,0 +1,30 @@
+<!--个人设置 index.wxml-->
+<view class="container">
+  <view class="item-tx-group">
+    <image class="img" src="{{ user.avatar }}"></image>
+    <text>{{user.user_nickname}}</text>
+  </view>
+  <view class="item-group goto" ontap="editSexFun">
+    <text class="tit">性别</text>
+    <text class="info">{{sex}}</text>
+  </view>
+  <view class="item-group goto" ontap="editMobile">
+    <text class="tit">联系方式</text>
+    <text class="info" wx:if="{{user.mobile}}">{{user.mobile}}</text>
+  </view>
+  <view class="item-group goto" ontap="gotoEditAddress">
+    <text class="tit">默认地址</text>
+    <text class="info" wx:if="{{user.address}}">{{user.address.address_text + user.address.address}}</text>
+  </view>
+  <view class="edit-mobile-box" wx:if="{{showEditMobile==true}}">
+    <view class="con" data-before="编辑联系方式">
+      <view class="input-box">
+        <input placeholder="请输入您的手机号" type="number" maxlength="11" value="{{editMobileNumb}}" bindinput="changeMobile" />
+      </view>
+      <view class="btn-bar">
+        <view class="save-btn" ontap="saveEditMobile">保存</view>
+        <view class="cancel-btn" ontap="cancelEditMobile">取消</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+<!--我的订单 index.wxml-->
+<view class="container">
+  <view class="order-add-info">
+    <view class="tag-bar">
+      <view class="state_{{ orderData.status }}">{{ orderData.state_text }}</view>
+      <view class="pj" wx:if="{{orderData.status==3&&orderData.is_vote==-1}}" ontap="showPopStarFunc" data-orderid="{{orderData.id}}" >评价</view>
+      <view class="pj_star" wx:if="{{(orderData.status==3||orderData.status==-9)&&orderData.is_vote>-1}}">
+        <view wx:for="{{orderData.is_vote_star}}" wx:key="_key" class="star_{{item}}"></view>
+      </view>
+      <view class="wpzh" wx:if="{{orderData.status==3}}" ontap="gotoServicePage" >物品找回</view>
+    </view>
+    <view class="userinfo"><text>{{orderData.address.username}}</text><text class="tel">{{orderData.address.mobile}}</text></view>
+    <view class="address">地址：{{orderData.address.address_text + orderData.address.address}}</view>
+    <view class="takeoversinfo"><text>收购方：{{orderData.employee.user_nickname}}</text><text class="tel">{{orderData.employee.mobile}}</text></view>
+    <view class="order-note" wx:if="{{ orderData.note&&orderData.note!='' }}">{{ orderData.note }}</view>
+  </view>
+  <view class="order-res" wx:if="{{ orderData.item&&orderData.item.length>0 }}">
+    <view class="item-group" wx:for="{{orderData.item}}" wx:for-item="isres" wx:key="reskey" wx:for-index="i">
+      <view class="tit">{{isres.name}}：</view>
+      <view class="level {{isres.level_class}}"></view>
+      <view class="numb">{{isres.num + isres.unit}}</view>
+      <view class="price">¥{{isres.market_price}}/{{isres.unit}}</view>
+    </view>
+    <view class="total-bar">(共{{ orderData.res_total.total }}件物品) 总收入：<text>¥{{ orderData.res_total._p }}</text></view>
+  </view>
+  <view class="order-info-bar">
+    <view class="text">订单编号：{{orderData.order_sn}}</view>
+    <view class="text">创建时间：{{orderData.create_time}}</view>
+    <view class="text">收购时间：{{orderData.paid_time}}</view>
+    <view class="text">到款时间：{{orderData.catch_time}}</view>
+    <view class="after-sales" ontap="callServicePhone" data-mobile="15386871398">联系官方售后</view>
+  </view>
+  <view class="pingjia-box" wx:if="{{pop_star_show}}">
+    <view class="con">
+      <view class="title">您对本次服务的评价</view>
+      <view class="select-bar" bind:touchstart="starTouchStart" bind:touchmove="starTouchMove">
+        <view wx:for="{{star_arr}}" wx:key="key" class="star_{{item}}"></view>
+      </view>
+      <view class="btn-bar">
+        <view class="confirm-btn" ontap="submitPingjia">确认</view>
+        <view class="cancel-btn" ontap="cancelPingjia">取消</view>
+      </view>
+    </view>
+  </view>
+</view>

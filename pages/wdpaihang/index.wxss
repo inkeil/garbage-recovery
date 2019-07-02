@@ -1,0 +1,82 @@
+/**排行index.wxss**/
+.my-paihang{
+	overflow:hidden;
+}
+.top-bar{
+	background:#fff;overflow:hidden;position:relative;
+}
+.top-bar::before{
+	content:"";display:block;width:1px;height:50rpx;position:absolute;left:49%;top:50%;margin-top:-25rpx;background:#ddd;
+}
+.top-bar .info{
+	float:left;width:49%;padding:27rpx;box-sizing:border-box;
+	font-size:36rpx;color:#ee1212;text-align:center;line-height:46rpx;
+}
+.top-bar .info::after{
+	content:attr(data-after);display:block;height:40rpx;line-height:40rpx;font-size:28rpx;color:#666;text-align:center;
+}
+.top-bar .f-r{float:right;}
+
+.my-pm{
+	margin-top:27rpx;background:#fff;position:relative;padding:20rpx 20rpx 20rpx 120rpx;height:80rpx;
+}
+.my-pm .avatar{
+	width:80rpx;height:80rpx;overflow:hidden;border-radius:50%;position:absolute;left:20rpx;top:20rpx;
+}
+.my-pm .avatar .img{
+	float:left;width:80rpx;height:80rpx;
+}
+.my-pm .text{
+	display:block;height:80rpx;line-height:80rpx;font-size:32rpx;color:#f57f0c;font-weight:900;
+}
+
+.list-box{
+	background:#fff;padding:0 0 27rpx;overflow:hidden;border-top:1px solid #ddd;
+}
+.list-box .item-group{
+	border-bottom:1px solid #ddd;padding:0 27rpx 27rpx 160rpx;position:relative;
+	margin-top:27rpx;
+}
+.list-box .item-group:last-child{
+	border-bottom:none;
+}
+.list-box .item-group .avatar{
+	width:120rpx;height:120rpx;overflow:hidden;border-radius:50%;position:absolute;left:20rpx;top:50%;margin-top:-70rpx;
+}
+.list-box .item-group .avatar .img{
+	float:left;width:120rpx;height:120rpx;
+}
+.list-box .item-group .info{
+	height:120rpx;
+}
+.list-box .item-group .info view{
+	min-height:40rpx;line-height:40rpx;font-size:30rpx;color:#666;text-indent:3rpx;
+}
+.list-box .item-group .info view.paiming{
+	min-height:40rpx;
+}
+.list-box .item-group .info view.money{
+	color:#ee1212;text-indent:0rpx;
+}
+
+
+.is-r{
+	float:right;
+}
+.is-l{
+	float:left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
