@@ -160,5 +160,5 @@ App({
     userInfo: null,
     orderDetail:null
   },
-  baseURL:"https://api.code7z.com/api/index.php?s="
+  baseURL:"http://www.code7z.com/"
 })
