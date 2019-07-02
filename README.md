@@ -23,3 +23,5 @@
 ![演示](http://image.code7z.com/default/20190527/37ed375051b787afe37f81b9e8c3e1fc.jpg!watermark)
 
 ![演示](http://image.code7z.com/default/20190504/3d47cb594b3ac2cde98ec8a82ca65b90.jpg!watermark)
+
+[项目详情](http://www.code7z.com/p/9.html)
